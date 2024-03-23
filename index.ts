@@ -15,8 +15,19 @@ const answer = await inquirer.prompt([
         message: "Please guess a number between 1 - 10: "
     }
 ]);
-if(answer.userGuessedNumber == randomNumber){
-    console.log("Congratulations! you guessed the number.")
-}else{
-    console.log("You guessed wrong number")
+
+let attempts = 0;
+while (true){
+
+    if(answer.userGuessedNumber == randomNumber){
+        console.log("Congratulations! you guessed the number.");
+        console.log("You guessed the right answer in "+ attempts+" attempts.");
+        break;
+    }else if (answer.userGuessedNumber >= randomNumber){
+        console.log("Try a lower number.");
+        attempts++;
+    }else{
+        console.log("Try a higher number.");
+        attempts++;
+    }
 }
